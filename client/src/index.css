@@ -1,3 +1,24 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+
+/* dark mode lookin scroll bar */
+
+::-webkit-scrollbar {
+    cursor: pointer;
+    width: 8px; /* for vertical scrollbars */
+}
+::-webkit-scrollbar-track {
+    background: #555;
+    cursor: pointer;
+}
+
+::-webkit-scrollbar-thumb {
+    background: #121212;
+    border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: #242424;
+}
