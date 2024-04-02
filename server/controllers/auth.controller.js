@@ -7,13 +7,13 @@ export const signup = async (req, res) => {
     const { fullName, username, password, confirmPassword, gender } = req.body;
 
     if (password !== confirmPassword) {
-      return res.status(404).json({ error: "Passwords dont match!" });
+      return res.status(400).json({ error: "Passwords dont match!" });
     }
 
     const user = await User.findOne({ username });
 
     if (user) {
-      return res.status(404).json({ error: "Username already exist!" });
+      return res.status(400).json({ error: "Username already exist!" });
     }
 
     //Hashing password
@@ -28,7 +28,7 @@ export const signup = async (req, res) => {
       username,
       password: hashPassword,
       gender,
-      profilePic: gender === "Male" ? boyProfile : girlProfile,
+      profilePic: gender === "male" ? boyProfile : girlProfile,
     });
 
     if (newUser) {
@@ -39,7 +39,7 @@ export const signup = async (req, res) => {
       res.status(201).json({
         _id: newUser._id,
         fullName: newUser.fullName,
-        password: newUser.password,
+        // password: newUser.password,
         profilePic: newUser.profilePic,
       });
     } else {
