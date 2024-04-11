@@ -47,7 +47,7 @@ const useSignup = () => {
       //context
       setAuthUser(data);
 
-      console.log(data);
+      // console.log(data);
     } catch (error) {
       toast.error(error.message);
     } finally {
